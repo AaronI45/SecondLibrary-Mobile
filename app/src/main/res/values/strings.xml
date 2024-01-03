@@ -18,4 +18,5 @@
 
     <!--Mensajeria-->
     <string name="mensaje">Escribe un mensaje</string>
+    <string name="eliminarcuenta">Eliminar cuenta</string>
 </resources>

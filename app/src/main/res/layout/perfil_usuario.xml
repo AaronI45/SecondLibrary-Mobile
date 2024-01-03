@@ -92,19 +92,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnEdicion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/blue_button_background"
-            android:drawableStart="@android:drawable/ic_menu_edit"
-            android:text="@string/edicion"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:drawablePadding="15dp"
-            android:padding="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEdicion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/blue_button_background"
+                android:drawableStart="@android:drawable/ic_menu_edit"
+                android:drawablePadding="15dp"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:text="@string/edicion"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEliminarCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/red_button_background"
+                android:drawableStart="@drawable/ic_delete"
+                android:drawablePadding="15dp"
+                android:layout_margin="5dp"
+                android:padding="2dp"
+                android:text="@string/eliminarcuenta"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtPublicaciones"
