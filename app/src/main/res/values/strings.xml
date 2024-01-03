@@ -15,4 +15,7 @@
     <string name="matricula">Matricula</string>
     <string name="correo">Correo</string>
     <string name="edicion">Editar datos</string>
+
+    <!--Mensajeria-->
+    <string name="mensaje">Escribe un mensaje</string>
 </resources>
