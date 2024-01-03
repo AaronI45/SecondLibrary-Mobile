@@ -4,4 +4,13 @@
     <string name="password">Contraseña\n</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="registrar">Registrarse</string>
+
+    <!--Perfil de usuario-->
+    <string name="nombreUsuario">NombreUsuario0</string>
+    <string name="passwordUsuario">Password</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidoPaterno">apellidoPaterno</string>
+    <string name="apellidoMaterno">apellidoMaterno</string>
+    <string name="matricula">Matricula</string>
+    <string name="correo">Correo</string>
 </resources>
