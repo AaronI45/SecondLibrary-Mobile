@@ -1,9 +1,11 @@
-package secondlibrary.main;
+package secondlibrary.main.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import secondlibrary.main.R;
+
+public class menu_principal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
