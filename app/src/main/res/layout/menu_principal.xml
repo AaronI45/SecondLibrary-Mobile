@@ -170,7 +170,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageIntercambios"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -181,7 +181,7 @@
                         app:srcCompat="@drawable/bookmark" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textViewIntercambio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -197,7 +197,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageViewChat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -207,7 +207,7 @@
                         app:srcCompat="@drawable/review" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textViewChat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -223,7 +223,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageViewPublicar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -233,7 +233,7 @@
                         app:srcCompat="@android:drawable/ic_input_add" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/textViewPublicar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
