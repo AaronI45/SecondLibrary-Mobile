@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".Activity.login">
+
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        app:srcCompat="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="9"
+        android:layout_marginBottom="15dp"
+        android:drawableStart="@drawable/btn_4"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="@string/nombre_usuario"
+        android:inputType="text"
+        android:background="@drawable/edittext_style"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="9"
+        android:layout_marginBottom="20dp"
+        android:drawableStart="@android:drawable/ic_secure"
+        android:drawablePadding="10dp"
+        android:hint="@string/password"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext_style"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/orange_button_background"
+        android:layout_weight="10"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:text="@string/iniciar_sesion" />
+
+    <TextView
+        android:id="@+id/tvRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registrar"
+        android:gravity="center"/>
+
+</LinearLayout>

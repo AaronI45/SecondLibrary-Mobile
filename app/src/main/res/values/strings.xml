@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SecondLibraryMobile</string>
+    <string name="nombre_usuario">Nombre de usuario:\n</string>
+    <string name="password">Contraseña\n</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="registrar">Registrarse</string>
 </resources>
