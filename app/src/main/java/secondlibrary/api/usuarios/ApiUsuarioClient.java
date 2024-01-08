@@ -10,14 +10,14 @@ import secondlibrary.domain.Usuario;
 public class ApiUsuarioClient{
     public interface UsuarioService {
         @POST("usuarios/login")
-        Call<UsuarioLogin> login (@Body Usuario usuario);
+        Call<UsuarioResponseJSON> login (@Body Usuario usuario);
 
         @POST("usuarios/")
         Call<Usuario> registrar (@Body Usuario usuario);
     }
 
     private final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.102:8081/api/v1/")
+            .baseUrl("http://192.168.100.130:8081/api/v1/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build();
 

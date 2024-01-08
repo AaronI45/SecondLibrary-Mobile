@@ -3,18 +3,10 @@ package secondlibrary.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
-import com.squareup.moshi.Json;
-
 public class Usuario implements Parcelable {
-    public static final int ESTADO_NO_ACTIVO = 1;
-    public static final int ESTADO_ACTIVO = 2;
-    public static final int ESTADO_BANEADO = 3;
-    public static final int ROL_ADMINISTRADOR = 1;
-    public static final int ROL_COMERCIANTE = 2;
     private int idUsuario;
-    @Json(name="Estado_usuario_idEstado_usuario")
+
     private int idEstadoUsuario;
-    @Json(name="Tipo_usuario_idTipo_usuario")
     private int idRol;
     private String nombreUsuario;
     private String contrasena;
@@ -23,10 +15,22 @@ public class Usuario implements Parcelable {
     private String apellidoMaterno;
     private String matricula;
     private String correo;
-    private String token;
-    @Json(name = "menssage")
-    private String mensaje;
+    private String tokenLogin;
     public Usuario() {
+    }
+
+    public Usuario(int idUsuario, int idEstadoUsuario, int idRol, String nombreUsuario, String contrasena, String nombre, String apellidoPaterno, String apellidoMaterno, String matricula, String correo, String tokenLogin) {
+        this.idUsuario = idUsuario;
+        this.idEstadoUsuario = idEstadoUsuario;
+        this.idRol = idRol;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.matricula = matricula;
+        this.correo = correo;
+        this.tokenLogin = tokenLogin;
     }
     protected Usuario(@NonNull Parcel in) {
         idUsuario = in.readInt();
@@ -39,14 +43,13 @@ public class Usuario implements Parcelable {
         apellidoMaterno = in.readString();
         matricula = in.readString();
         correo = in.readString();
-        token = in.readString();
-        mensaje = in.readString();
+        tokenLogin = in.readString();
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
         @Override
         public Usuario createFromParcel(Parcel in) {
-            return null;
+            return new Usuario(in);
         }
 
         @Override
@@ -135,20 +138,12 @@ public class Usuario implements Parcelable {
         this.correo = correo;
     }
 
-    public String getToken() {
-        return token;
+    public String getTokenLogin() {
+        return tokenLogin;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setTokenLogin(String tokenLogin) {
+        this.tokenLogin = tokenLogin;
     }
 
     @Override
@@ -168,7 +163,6 @@ public class Usuario implements Parcelable {
         parcel.writeString(apellidoMaterno);
         parcel.writeString(matricula);
         parcel.writeString(correo);
-        parcel.writeString(token);
-        parcel.writeString(mensaje);
+        parcel.writeString(tokenLogin);
     }
 }

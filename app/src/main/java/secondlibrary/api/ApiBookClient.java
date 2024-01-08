@@ -5,7 +5,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class ApiBookClient {
 
-    private static final String apiKey = "51338_263bca0ac8ea693171ea0ac17771d185";
+    private static final String apiKey = "";
 
     public interface BookService {
 

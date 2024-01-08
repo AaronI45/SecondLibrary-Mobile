@@ -4,9 +4,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import secondlibrary.api.usuarios.UsuarioLogin;
 import secondlibrary.domain.Usuario;
-import secondlibrary.main.R;
 import secondlibrary.main.databinding.MenuPrincipalBinding;
 
 public class menu_principal extends AppCompatActivity {
@@ -23,9 +21,8 @@ public class menu_principal extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         usuarioIniciado = extras.getParcelable(USUARIO_KEY);
+        binding.setUsuarioLogin(usuarioIniciado);
 
-        Log.i("SDI", "onCreate: "+usuarioIniciado.getNombreUsuario());
 
-        //binding.textView2.setText(usuarioIniciado.getNombreUsuario());
     }
 }

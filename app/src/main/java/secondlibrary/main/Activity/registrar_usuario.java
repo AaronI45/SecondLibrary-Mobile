@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import secondlibrary.api.usuarios.ApiUsuarioClient;
 import secondlibrary.domain.Usuario;
-import secondlibrary.main.R;
 import secondlibrary.main.databinding.RegistrarUsuarioBinding;
 
 public class registrar_usuario extends AppCompatActivity {
@@ -49,7 +48,7 @@ public class registrar_usuario extends AppCompatActivity {
                         Toast.makeText(registrar_usuario.this, "Usuario registrado", Toast.LENGTH_SHORT).show();
                         irMenuPrincipal();
                     } else {
-                        Toast.makeText(registrar_usuario.this, "Error al registrar usuario: " + response.body().getMensaje(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(registrar_usuario.this, "Error al registrar usuario: ", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

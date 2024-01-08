@@ -10,7 +10,7 @@ import android.os.Bundle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import secondlibrary.api.usuarios.ApiUsuarioClient;
-import secondlibrary.api.usuarios.UsuarioLogin;
+import secondlibrary.api.usuarios.UsuarioResponseJSON;
 import secondlibrary.domain.Usuario;
 import secondlibrary.main.databinding.LoginBinding;
 
@@ -34,14 +34,14 @@ public class login extends AppCompatActivity {
             usuarioLogin.setNombreUsuario(binding.editTextUsername.getText().toString());
             usuarioLogin.setContrasena(binding.editTextPassword.getText().toString());
             ApiUsuarioClient.UsuarioService service = ApiUsuarioClient.getInstance().getService();
-            service.login(usuarioLogin).enqueue(new Callback<UsuarioLogin>() {
+            service.login(usuarioLogin).enqueue(new Callback<UsuarioResponseJSON>() {
                 @Override
-                public void onResponse(Call<UsuarioLogin> call, retrofit2.Response<UsuarioLogin> response) {
+                public void onResponse(Call<UsuarioResponseJSON> call, retrofit2.Response<UsuarioResponseJSON> response) {
                     if (response.isSuccessful()) {
-                        Usuario usuario = response.body().getUsuario();
-                        usuario.setToken(response.body().getToken());
+                        UsuarioResponseJSON usuario = response.body();
+                        String token = response.headers().get("x-token");
                         if (usuario != null) {
-                            abrirMenuPrincipal(usuario);
+                            abrirMenuPrincipal(usuario, token);
                         } else {
                             Log.i("SDI", "onResponse: " + response.body());
                             Toast.makeText(login.this, "Usuario o contraseña incorrectos" + usuario.getNombreUsuario(), Toast.LENGTH_SHORT).show();
@@ -50,7 +50,7 @@ public class login extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<UsuarioLogin> call, Throwable t) {
+                public void onFailure(Call<UsuarioResponseJSON> call, Throwable t) {
                     Toast.makeText(login.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                     Log.i("SDI", "onFailure: "+t.getMessage());
                 }
@@ -61,10 +61,20 @@ public class login extends AppCompatActivity {
             abrirRegistro();
         });
     }
-    private void abrirMenuPrincipal(Usuario usuario){
-        Log.i("Usuario", usuario.getNombre());
+    private void abrirMenuPrincipal(UsuarioResponseJSON usuario, String token){
+        Usuario usuarioLogin = new Usuario();
+        usuarioLogin.setIdUsuario(usuario.getIdUsuario());
+        usuarioLogin.setIdEstadoUsuario(usuario.getEstadoUsuarioIdEstadoUsuario());
+        usuarioLogin.setIdRol(usuario.getTipoUsuarioIdTipoUsuario());
+        usuarioLogin.setNombreUsuario(usuario.getNombreUsuario());
+        usuarioLogin.setContrasena(usuario.getContrasena());
+        usuarioLogin.setNombre(usuario.getNombre());
+        usuarioLogin.setApellidoPaterno(usuario.getApellidoPaterno());
+        usuarioLogin.setApellidoMaterno(usuario.getApellidoMaterno());
+        usuarioLogin.setCorreo(usuario.getCorreo());
+        usuarioLogin.setTokenLogin(token);
         Intent intent = new Intent(this, menu_principal.class);
-        intent.putExtra(menu_principal.USUARIO_KEY, usuario);
+        intent.putExtra(menu_principal.USUARIO_KEY, usuarioLogin);
         startActivity(intent);
     }
 
