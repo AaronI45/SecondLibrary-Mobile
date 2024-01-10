@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+                <ImageView
+                        android:id="@+id/ivLibro"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:paddingLeft="14dp"
+                        android:paddingRight="14dp"
+                        tools:src="@drawable/btn_3"/>
+                <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/ivLibro"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="4dp"
+                        android:layout_toRightOf="@+id/ivLibro">
+                    <TextView
+                            android:id="@+id/tvTitulo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            tools:text="Nombre del libro"
+                            android:textColor="@color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:id="@+id/tvAutor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="Estado del intercambio"
+                            android:textSize="18sp"/>
+                </LinearLayout>
+                <TextView
+                        android:id="@+id/tvEstadoIntercambio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="6dp"
+                        tools:text="estado"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
