@@ -24,11 +24,10 @@ public class OfertaIntercambio implements Parcelable {
     private String estadoLibro;
     @Json(name = "fechaDeCreacion")
     private String fechaDeCreacion;
-
     public OfertaIntercambio() {
     }
 
-    public OfertaIntercambio(int idIntercambio, int idComerciante, String isbnComerciante, String estadoIntercambio, String estadoLibro, String fechaDeCreacion) {
+    public OfertaIntercambio(int idIntercambio, int idComerciante, String isbnComerciante, String estadoIntercambio, String estadoLibro, String fechaDeCreacion, Libro libroIntercambio) {
         this.idIntercambio = idIntercambio;
         this.idComerciante = idComerciante;
         this.isbnComerciante = isbnComerciante;
@@ -105,7 +104,6 @@ public class OfertaIntercambio implements Parcelable {
     public void setFechaDeCreacion(String fechaDeCreacion) {
         this.fechaDeCreacion = fechaDeCreacion;
     }
-
 
     @Override
     public boolean equals(Object o) {

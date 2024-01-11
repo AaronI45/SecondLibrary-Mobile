@@ -9,8 +9,13 @@ import android.os.Bundle;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import secondlibrary.api.ApiClient;
+import secondlibrary.api.Book.ApiBookClient;
+import secondlibrary.api.Book.LibroResponseJSON;
+import secondlibrary.domain.Libro;
 import secondlibrary.domain.Usuario;
+import secondlibrary.main.Activity.menuprincipal.menu_principal;
 import secondlibrary.main.databinding.LoginBinding;
 
 public class login extends AppCompatActivity {
@@ -21,13 +26,13 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = LoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        String email = binding.editTextUsername.getText().toString();
-        String password = binding.editTextPassword.getText().toString();
 
         configurarBotones();
     }
 
     private void configurarBotones(){
+
+
         binding.btnIniciarSesion.setOnClickListener(v -> {
             Usuario usuarioLogin = new Usuario();
             usuarioLogin.setNombreUsuario(binding.editTextUsername.getText().toString());
@@ -38,7 +43,8 @@ public class login extends AppCompatActivity {
                 public void onResponse(Call<Usuario> call, retrofit2.Response<Usuario> response) {
                     if (response.isSuccessful()) {
                         Usuario usuario = response.body();
-                        String token = response.headers().get("x-token");
+                        String token = response.headers().get("token");
+                        Log.i("SDI", "onResponse: "+token);
                         if (usuario != null) {
                             abrirMenuPrincipal(usuario, token);
                         } else {
@@ -62,6 +68,7 @@ public class login extends AppCompatActivity {
     }
     private void abrirMenuPrincipal(Usuario usuario, String token){
         usuario.setTokenLogin(token);
+        Log.i("TokenLogin", usuario.getTokenLogin());
         Intent intent = new Intent(this, menu_principal.class);
         intent.putExtra(menu_principal.USUARIO_KEY, usuario);
         startActivity(intent);

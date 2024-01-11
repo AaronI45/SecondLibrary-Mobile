@@ -19,9 +19,6 @@
             android:name=".Activity.banear_usuario"
             android:exported="false" />
         <activity
-            android:name=".Activity.publicar_libro"
-            android:exported="false" />
-        <activity
             android:name=".Activity.registrar_usuario"
             android:exported="false" />
         <activity
@@ -49,7 +46,7 @@
             android:name=".Activity.detalles_publicacion"
             android:exported="false" />
         <activity
-            android:name=".Activity.menu_principal"
+            android:name=".Activity.menuprincipal.menu_principal"
             android:exported="false" />
     </application>
 

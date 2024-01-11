@@ -8,6 +8,8 @@ import secondlibrary.main.R;
 
 public class banear_usuario extends AppCompatActivity {
 
+    public static String USUARIO_KEY = "usuario";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

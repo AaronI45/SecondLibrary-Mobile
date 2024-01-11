@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="intercambio"
+                  type="secondlibrary.domain.OfertaIntercambio"/>
+        <variable name="libro"
+                  type="secondlibrary.domain.Libro"/>
+        <variable name="usuario"
+                  type="secondlibrary.domain.Usuario"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.organizar_intercambio">
@@ -147,22 +156,6 @@
                         android:inputType="text"
                         android:hint="Isbn del libro" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="Estadod el libro:"/>
-
-                    <EditText
-                        android:id="@+id/editTextEstado"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:hint="Estado del libro"/>
-
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnRegistrarIntercambio"
                         style="@android:style/Widget.Button"
@@ -181,3 +174,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

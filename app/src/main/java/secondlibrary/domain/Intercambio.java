@@ -9,49 +9,34 @@ import com.squareup.moshi.Json;
 
 import java.util.Objects;
 
-@Entity(tableName = "intercambios")
 public class Intercambio implements Parcelable {
-    @PrimaryKey
-    @Json (name = "idIntercambio")
+    @Json(name = "idIntercambio")
     private int idIntercambio;
-    @Json(name = "Comerciante_idComerciante")
-    private int idComerciante;
+    @Json (name = "Oferta_Intercambio_idOferta_Intercambio")
+    private int idOfertaIntercambio;
     @Json(name = "Usuario_idUsuario")
     private int idUsuario;
-    @Json(name = "isbnComerciante")
-    private String isbnComerciante;
     @Json(name = "isbnUsuario")
     private String isbnUsuario;
-    @Json(name = "estadoIntercambio")
-    private String estadoIntercambio;
-    @Json(name = "estadoLibro")
-    private String estadoLibro;
-    @Json(name = "fechaDeCreacion")
-    private String fechaDeCreacion;
     @Json(name = "fechaDeFinalizacion")
     private String fechaDeFinalizacion;
 
-    public Intercambio(int idIntercambio, int idComerciante, int idUsuario, String isbnComerciante, String isbnUsuario, String estadoIntercambio, String estadoLibro, String fechaDeCreacion, String fechaDeFinalizacion) {
+    public Intercambio() {
+    }
+
+    public Intercambio(int idIntercambio, int idOfertaIntercambio, int idUsuario, String isbnUsuario, String fechaDeFinalizacion) {
         this.idIntercambio = idIntercambio;
-        this.idComerciante = idComerciante;
+        this.idOfertaIntercambio = idOfertaIntercambio;
         this.idUsuario = idUsuario;
-        this.isbnComerciante = isbnComerciante;
         this.isbnUsuario = isbnUsuario;
-        this.estadoIntercambio = estadoIntercambio;
-        this.estadoLibro = estadoLibro;
-        this.fechaDeCreacion = fechaDeCreacion;
         this.fechaDeFinalizacion = fechaDeFinalizacion;
     }
 
-    public Intercambio(){}
-
-    protected Intercambio(@NonNull Parcel in) {
+    protected Intercambio(@NonNull Parcel in){
         idIntercambio = in.readInt();
-        idComerciante = in.readInt();
+        idOfertaIntercambio = in.readInt();
         idUsuario = in.readInt();
-        isbnComerciante = in.readString();
         isbnUsuario = in.readString();
-        fechaDeCreacion = in.readString();
         fechaDeFinalizacion = in.readString();
     }
 
@@ -75,12 +60,12 @@ public class Intercambio implements Parcelable {
         this.idIntercambio = idIntercambio;
     }
 
-    public int getIdComerciante() {
-        return idComerciante;
+    public int getIdOfertaIntercambio() {
+        return idOfertaIntercambio;
     }
 
-    public void setIdComerciante(int idComerciante) {
-        this.idComerciante = idComerciante;
+    public void setIdOfertaIntercambio(int idOfertaIntercambio) {
+        this.idOfertaIntercambio = idOfertaIntercambio;
     }
 
     public int getIdUsuario() {
@@ -91,44 +76,12 @@ public class Intercambio implements Parcelable {
         this.idUsuario = idUsuario;
     }
 
-    public String getIsbnComerciante() {
-        return isbnComerciante;
-    }
-
-    public void setIsbnComerciante(String isbnComerciante) {
-        this.isbnComerciante = isbnComerciante;
-    }
-
     public String getIsbnUsuario() {
         return isbnUsuario;
     }
 
     public void setIsbnUsuario(String isbnUsuario) {
         this.isbnUsuario = isbnUsuario;
-    }
-
-    public String getEstadoIntercambio() {
-        return estadoIntercambio;
-    }
-
-    public void setEstadoIntercambio(String estadoIntercambio) {
-        this.estadoIntercambio = estadoIntercambio;
-    }
-
-    public String getEstadoLibro() {
-        return estadoLibro;
-    }
-
-    public void setEstadoLibro(String estadoLibro) {
-        this.estadoLibro = estadoLibro;
-    }
-
-    public String getFechaDeCreacion() {
-        return fechaDeCreacion;
-    }
-
-    public void setFechaDeCreacion(String fechaDeCreacion) {
-        this.fechaDeCreacion = fechaDeCreacion;
     }
 
     public String getFechaDeFinalizacion() {
@@ -145,16 +98,12 @@ public class Intercambio implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(@NonNull Parcel parcel, int i) {
-        parcel.writeInt(idIntercambio);
-        parcel.writeInt(idComerciante);
-        parcel.writeInt(idUsuario);
-        parcel.writeString(isbnComerciante);
-        parcel.writeString(isbnUsuario);
-        parcel.writeString(estadoIntercambio);
-        parcel.writeString(estadoLibro);
-        parcel.writeString(fechaDeCreacion);
-        parcel.writeString(fechaDeFinalizacion);
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(idIntercambio);
+        dest.writeInt(idOfertaIntercambio);
+        dest.writeInt(idUsuario);
+        dest.writeString(isbnUsuario);
+        dest.writeString(fechaDeFinalizacion);
     }
 
     @Override
@@ -162,11 +111,11 @@ public class Intercambio implements Parcelable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Intercambio that = (Intercambio) o;
-        return idIntercambio == that.idIntercambio && idComerciante == that.idComerciante && idUsuario == that.idUsuario && Objects.equals(isbnComerciante, that.isbnComerciante) && Objects.equals(isbnUsuario, that.isbnUsuario) && Objects.equals(fechaDeCreacion, that.fechaDeCreacion) && Objects.equals(fechaDeFinalizacion, that.fechaDeFinalizacion);
+        return idIntercambio == that.idIntercambio && idOfertaIntercambio == that.idOfertaIntercambio && idUsuario == that.idUsuario && Objects.equals(isbnUsuario, that.isbnUsuario) && Objects.equals(fechaDeFinalizacion, that.fechaDeFinalizacion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idIntercambio, idComerciante, idUsuario, isbnComerciante, isbnUsuario, fechaDeCreacion, fechaDeFinalizacion);
+        return Objects.hash(idIntercambio, idOfertaIntercambio, idUsuario, isbnUsuario, fechaDeFinalizacion);
     }
 }

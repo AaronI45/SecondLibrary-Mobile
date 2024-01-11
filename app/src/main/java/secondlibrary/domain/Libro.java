@@ -5,21 +5,27 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import com.squareup.moshi.Json;
 
+import java.util.List;
+
 public class Libro implements Parcelable {
     @Json(name="title")
     private String titulo;
     @Json(name="authors")
-    private String[] autores;
+    private List<String> autores;
     @Json(name="publisher")
     private String editorial;
+    @Json(name="edition")
+    private String edicion;
     @Json(name="image")
     private String imagenUrl;
+    @Json(name="isbn")
     private String isbn;
 
-    public Libro(String titulo, String[] autores, String editorial, String imagenUrl, String isbn) {
+    public Libro(String titulo, List<String> autores, String editorial, String edicion, String imagenUrl, String isbn) {
         this.titulo = titulo;
         this.autores = autores;
         this.editorial = editorial;
+        this.edicion = edicion;
         this.imagenUrl = imagenUrl;
         this.isbn = isbn;
     }
@@ -29,8 +35,9 @@ public class Libro implements Parcelable {
 
     protected Libro(@NonNull Parcel in){
         titulo = in.readString();
-        autores = in.createStringArray();
+        autores = in.createStringArrayList();
         editorial = in.readString();
+        edicion = in.readString();
         imagenUrl = in.readString();
         isbn = in.readString();
     }
@@ -38,7 +45,7 @@ public class Libro implements Parcelable {
     public static final Creator<Libro> CREATOR = new Creator<Libro>() {
         @Override
         public Libro createFromParcel(Parcel in) {
-            return null;
+            return new Libro(in);
         }
 
         @Override
@@ -55,11 +62,11 @@ public class Libro implements Parcelable {
         this.titulo = titulo;
     }
 
-    public String[] getAutores() {
+    public List<String> getAutores() {
         return autores;
     }
 
-    public void setAutores(String[] autores) {
+    public void setAutores(List<String> autores) {
         this.autores = autores;
     }
 
@@ -69,6 +76,14 @@ public class Libro implements Parcelable {
 
     public void setEditorial(String editorial) {
         this.editorial = editorial;
+    }
+
+    public String getEdicion() {
+        return edicion;
+    }
+
+    public void setEdicion(String edicion) {
+        this.edicion = edicion;
     }
 
     public String getImagenUrl() {
@@ -95,8 +110,9 @@ public class Libro implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(titulo);
-        parcel.writeStringArray(autores);
+        parcel.writeStringList(autores);
         parcel.writeString(editorial);
+        parcel.writeString(edicion);
         parcel.writeString(imagenUrl);
         parcel.writeString(isbn);
     }

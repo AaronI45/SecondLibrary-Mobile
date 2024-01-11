@@ -1,4 +1,4 @@
-package secondlibrary.main.Activity;
+package secondlibrary.main.Activity.menuprincipal;
 
 import android.app.Application;
 import android.util.Log;
@@ -11,7 +11,7 @@ import secondlibrary.api.StatusWithDescription;
 import secondlibrary.database.OfertaIntercambioDatabase;
 import secondlibrary.domain.Intercambio;
 import secondlibrary.domain.OfertaIntercambio;
-import secondlibrary.domain.Prestamo;
+import secondlibrary.main.Activity.RepositorioOfertaIntercambios;
 
 import java.util.List;
 
@@ -48,4 +48,5 @@ public class OfertaIntercambioViewModel extends AndroidViewModel {
     public LiveData<StatusWithDescription> getStatusWithDescriptionMutableLiveData(){
         return statusWithDescriptionMutableLiveData;
     }
+
 }

@@ -1,15 +1,24 @@
-package secondlibrary.main.Activity;
+package secondlibrary.main.Activity.menuprincipal;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import coil.Coil;
+import coil.ImageLoader;
+import coil.request.ImageRequest;
 import org.jetbrains.annotations.NotNull;
-import secondlibrary.domain.Intercambio;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import secondlibrary.api.Book.ApiBookClient;
+import secondlibrary.api.Book.LibroResponseJSON;
+import secondlibrary.domain.Libro;
 import secondlibrary.domain.OfertaIntercambio;
 import secondlibrary.main.databinding.OfertaIntercambioListItemBinding;
 
@@ -36,7 +45,7 @@ public class OfertaIntercambioAdapter extends ListAdapter<OfertaIntercambio, Ofe
 
     Context context;
 
-    protected OfertaIntercambioAdapter(Context context) {
+    public OfertaIntercambioAdapter(Context context) {
         super(DIFF_CALLBACK);
         this.context = context;
     }
@@ -64,18 +73,44 @@ public class OfertaIntercambioAdapter extends ListAdapter<OfertaIntercambio, Ofe
         holder.bind(intercambio);
     }
 
-    class OfertaIntercambioViewHolder extends RecyclerView.ViewHolder{
+    class OfertaIntercambioViewHolder extends RecyclerView.ViewHolder {
 
         private final OfertaIntercambioListItemBinding binding;
-        public OfertaIntercambioViewHolder(@NonNull OfertaIntercambioListItemBinding binding){
+
+        public OfertaIntercambioViewHolder(@NonNull OfertaIntercambioListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public void bind(OfertaIntercambio ofertaIntercambio){
-            binding.tvTitulo.setText(ofertaIntercambio.getIsbnComerciante());
-            binding.tvAutor.setText(ofertaIntercambio.getEstadoLibro());
-            binding.tvEstadoIntercambio.setText(ofertaIntercambio.getEstadoIntercambio());
+        public void bind(OfertaIntercambio ofertaIntercambio) {
+            ApiBookClient.BookService service = ApiBookClient.getInstance().getService();
+            service.getBook(ofertaIntercambio.getIsbnComerciante()).enqueue(new Callback<LibroResponseJSON>() {
+                @Override
+                public void onResponse(Call<LibroResponseJSON> call, Response<LibroResponseJSON> response) {
+                    LibroResponseJSON libroResponseJSON = response.body();
+                    Libro libro = libroResponseJSON.getLibroResponse();
+                    if (libro != null) {
+                        binding.tvTitulo.setText(libro.getTitulo());
+                        binding.tvAutor.setText(libro.getAutores().get(0));
+                        binding.tvEstadoIntercambio.setText(ofertaIntercambio.getEstadoIntercambio());
+                        ImageLoader imageLoader = Coil.imageLoader(context);
+
+                        ImageRequest request = new ImageRequest.Builder(context)
+                                .data(libro.getImagenUrl())
+                                .target(binding.ivLibro)
+                                .build();
+                        imageLoader.enqueue(request);
+
+                        Log.i("SDI", libro.getTitulo());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LibroResponseJSON> call, Throwable t) {
+                    Log.i("SDI", t.getMessage());
+                }
+            });
+
 
             binding.getRoot().setOnClickListener(v -> {
                 onItemClickListener.onItemClick(ofertaIntercambio);

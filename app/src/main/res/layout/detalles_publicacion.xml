@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="intercambio"
+                  type="secondlibrary.domain.OfertaIntercambio"/>
+        <variable name="libro"
+                  type="secondlibrary.domain.Libro"/>
+        <variable name="usuario"
+                    type="secondlibrary.domain.Usuario"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.detalles_publicacion">
@@ -76,7 +85,7 @@
                         android:id="@+id/edicionLibro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edicion del libro"
+                        android:text="Edicion del libro: "
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -104,16 +113,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="valor reseña"
+                        android:text="Calificación"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/valoracionComerciante"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="Valoracion"
+                        android:text="0"
                         android:textColor="@color/black" />
 
                     <ImageView
@@ -124,7 +133,7 @@
                         app:srcCompat="@drawable/review" />
 
                     <TextView
-                        android:id="@+id/txtNumReseñas"
+                        android:id="@+id/txtNumResenas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -133,11 +142,11 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/txtTotalResenas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Reseñas"
+                        tools:text="Reseñas"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -177,3 +186,4 @@
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
