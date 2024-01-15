@@ -13,7 +13,7 @@ public class ApiBookClient {
     public interface BookService {
         @Headers({
                 "Content-Type: application/json",
-                "Authorization: 51338_263bca0ac8ea693171ea0ac17771d185"})
+                "Authorization: "})
         @GET("book/{isbn}")
         Call<LibroResponseJSON> getBook(@Path("isbn") String isbn);
     }
